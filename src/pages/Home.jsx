@@ -1,6 +1,6 @@
 import BestSeller from "../components/BestSeller"
 import Hero from "../components/Hero"
-import Latestcollection from "../components/Latestcollection"
+import Latestcollection from "../components/LatestCollection"
 import { NewsLetterBox } from "../components/NewsLetterBox"
 import { OurPolicy } from "../components/OurPolicy"
 

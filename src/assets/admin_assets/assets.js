@@ -4,12 +4,14 @@ import order_icon from './order_icon.png'
 import upload_area from './upload_area.png'
 import parcel_icon from './parcel_icon.svg'
 import fonts from './fonts.webp'
+import logomy from './Logo-my.webp'
 export const assets = {
     logo,
     add_icon,
     order_icon,
     upload_area,
     parcel_icon,
-    fonts
+    fonts,
+    logomy
 }
 

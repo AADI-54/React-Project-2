@@ -5,7 +5,7 @@ import Title from "../components/Title";
 import ProductItem from "../components/ProductItem";
 
 const Collection = () => {
-  const { products } = useContext(ShopContext);
+  const { products,search,showsearch } = useContext(ShopContext);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [showFilter, setshowFilter] = useState(false);
   const [category, setcategory] = useState([]);
@@ -49,24 +49,29 @@ const sortProducts = () => {
   }
 };
 
-  const applyFilter = () => {
-    let productscopy = products.slice();
-    if (category.length > 0) {
-      productscopy = productscopy.filter((product) =>
-        category.includes(product.category)
-      );
-    }
-    if (subcategory.length > 0) {
-      productscopy = productscopy.filter((product) =>
-        subcategory.includes(product.subCategory)
-      );
-    }
-    setFilteredProducts(productscopy);
-  };
+const applyFilter = () => {
+  let productscopy = products.slice();
+  if (showsearch && search) {
+    productscopy = productscopy.filter((product) =>
+      product.name.toLowerCase().includes(String(search).toLowerCase())
+    );
+  }
+  if (category.length > 0) {
+    productscopy = productscopy.filter((product) =>
+      category.includes(product.category)
+    );
+  }
+  if (subcategory.length > 0) {
+    productscopy = productscopy.filter((product) =>
+      subcategory.includes(product.subCategory)
+    );
+  }
+  setFilteredProducts(productscopy);
+};
 
   useEffect(() => {
     applyFilter();
-  }, [category, subcategory]);
+  }, [category, subcategory, search, showsearch]);
 
   useEffect(()=>{
     sortProducts();
